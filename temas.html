@@ -40,7 +40,7 @@
         <div class="container" style="margin-top: 49px;">
             <div class="row">
                 <div class="col-md-12 d-xxl-flex justify-content-xxl-center">
-                    <div><button onclick="window.history.back()" style="
+                    <div class="d-flex justify-content-center"><button onclick="window.history.back()" style="
   background-color: #2348A0;
   color: white;
   padding: 10px 20px;
@@ -55,12 +55,12 @@
             </div>
         </div>
     </section>
-    <section style="margin-top: 42px;background: #f5f4f7;padding-top: 52px;padding-bottom: 30px;">
+    <section id="sub" style="margin-top: 42px;background: #f5f4f7;padding-top: 52px;padding-bottom: 30px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-xxl-12">
                     <section class="py-5 bg-light">
-                        <h1 class="text-center text-success" style="padding-top: 15px;padding-bottom: 15px;color: #1b6ce5!important;"><strong>Ejes temáticos</strong></h1>
+                        <h1 class="text-center text-success" style="padding-top: 15px;padding-bottom: 15px;color: #1b6ce5!important;"><strong>Escenarios de práctica</strong></h1>
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-6 offset-md-3">
@@ -75,9 +75,9 @@
 </button>
 
 <!-- MODAL CONTENEDOR -->
-<div id="popupWidget" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 9999;">
+<div id="popupWidget" onclick="cerrarSiClickFuera(event)" style="display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100vh;background: rgba(0,0,0,0.85);backdrop-filter: blur(4px);-webkit-backdrop-filter: blur(4px);justify-content: center;align-items: center;flex-direction: column;z-index: 9999;">
   
-  <!-- SOLO EL BOTÓN DE CIERRE flotante -->
+  <!-- BOTÓN ✕ -->
   <button onclick="document.getElementById('popupWidget').style.display='none'" style="
     position: absolute;
     top: 20px;
@@ -94,12 +94,25 @@
     ✕
   </button>
 
-  <!-- ELEVENLABS WIDGET SIN CONTENEDOR BLANCO -->
+  <!-- TEXTO CENTRAL -->
+  <div id="popupContent" style="color: white; text-align: center; font-size: 16px; font-weight: 500; max-width: 340px; margin-bottom: 24px; opacity: 0; transform: translateY(20px); animation: fadeUp 1s ease-out forwards;">
+    Al suscribirte podrás interactuar en sesiones de hasta cinco minutos cada una. Podrás hacer hasta dos horas de sesiones por mes
+  </div>
+
+  <!-- WIDGET DE ELEVENLABS -->
   <elevenlabs-convai agent-id="agent_01jwvnh5bvf7ksnr0swty2kmgx"></elevenlabs-convai>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
+  <style>
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
   <script>
-    // Mueve el widget al fondo inferior derecho cuando se carga
     const moverWidget = setInterval(() => {
       const widgetContenedor = document.querySelector('[data-testid="convai-widget-launcher-container"]');
       if (widgetContenedor) {
@@ -112,6 +125,13 @@
         clearInterval(moverWidget);
       }
     }, 200);
+
+    function cerrarSiClickFuera(event) {
+      const content = document.getElementById('popupContent');
+      if (!content.contains(event.target)) {
+        document.getElementById('popupWidget').style.display = 'none';
+      }
+    }
   </script>
 
 </div></div>

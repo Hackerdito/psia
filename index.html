@@ -30,7 +30,7 @@
                     <li class="nav-item d-flex justify-content-start"><a class="nav-link d-flex" style="color: #ffffff;" href="https://blog.universidaduk.com/" target="_blank">Blog</a></li>
                     <li class="nav-item d-flex justify-content-start"><a class="nav-link d-flex" href="https://universidaduk.com/tienda" style="color: rgb(255,255,255);" target="_blank">Tienda</a></li>
                     <li class="nav-item d-flex justify-content-start"><a class="btn btn-primary" role="button" style="background: #ff671b;border-color: #ff671b;margin-left: 10px;margin-top: 5px;" href="https://ukuepa.secure.force.com/LandingKuepa" target="_blank">Mi Portal Uk</a></li>
-                    <li class="nav-item d-flex justify-content-start"><a class="btn btn-primary" role="button" style="background: #719a75;border-color: #719a75;margin-left: 10px;margin-top: 5px;" href="login.html" target="_blank">Inicia Sesión</a></li>
+                    <li class="nav-item d-flex justify-content-start"><a class="btn btn-primary" role="button" style="background: #719a75;border-color: #719a75;margin-left: 10px;margin-top: 5px;" href="login.html">Inicia Sesión</a></li>
                 </ul>
                 <div style="margin-top: 5px;">
                     <div class="dropdown d-flex d-sm-flex justify-content-start justify-content-sm-start"><a aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fa fa-globe" style="color: rgb(255,255,255);font-size: 32px;margin-left: 14px;text-decoration: none;"></i></a>
@@ -46,10 +46,10 @@
                 <div class="col-md-12 col-lg-6 col-xl-4 col-xxl-4 d-xl-flex align-items-xl-center align-items-xxl-center" style="margin-top: 20px;">
                     <div style="margin-top: 22px;">
                         <div style="margin-bottom: 27px;">
-                            <p style="color: rgb(255,255,255);font-size: 1.5rem;font-family: Inter, sans-serif;font-weight: 700 !important;text-transform: uppercase;">Entrena tus PRÁCTICAS</p>
+                            <p style="color: rgb(255,255,255);font-size: 1.5rem;font-family: Inter, sans-serif;font-weight: 700 !important;text-transform: uppercase;">Entrena tus habilidades</p>
                         </div>
                         <div style="margin-top: -31px;">
-                            <h1 style="font-size: 4.2rem;color: rgb(255,255,255);font-weight: 700 !important;">CLÍNICAS</h1>
+                            <h1 style="font-size: 4.2rem;color: rgb(255,255,255);font-weight: 700 !important;">PRÁCTICAS</h1>
                         </div>
                         <div><button class="btn btn-primary btn-lg button-light" type="submit" style="font-size: 1.2rem;margin-left: 0px;background-color: #f9b233;border: none;color: #37434d;font-weight: 700 !important;text-transform: uppercase;">desde hoy con Psia</button></div>
                         <div style="margin-top: 14px;">
@@ -57,17 +57,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-4 d-xxl-flex justify-content-xxl-center align-items-xxl-start" style="border-top-left-radius: 36px;border-top-right-radius: 36px;border-bottom-right-radius: 36px;border-bottom-left-radius: 36px;margin-top: 20px;"><div style="position: relative; width: 100%; max-width: 100%; height: 420px; overflow: hidden; border-radius: 20px;">
+                <div class="col-md-6 col-lg-6 col-xl-4 d-xxl-flex justify-content-xxl-center align-items-xxl-start" style="border-top-left-radius: 36px;border-top-right-radius: 36px;border-bottom-right-radius: 36px;border-bottom-left-radius: 36px;margin-top: 20px;"><!-- Incluye Lucide si aún no lo tienes -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<div style="position: relative; width: 100%; max-width: 100%; height: 420px; overflow: hidden; border-radius: 20px;">
   <video id="miVideo" 
          src="https://psia.netlify.app/p1.mp4" 
          autoplay 
-         muted 
          playsinline 
          loop 
          style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
   </video>
 
-  <!-- Botón para activar/desactivar sonido -->
+  <!-- Botón de sonido con icono -->
   <button id="btnSonido"
           onclick="toggleSonido()" 
           style="
@@ -82,24 +84,41 @@
             cursor: pointer;
             font-size: 14px;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
           ">
-    🔇 Activar sonido
+    <i id="iconSonido" data-lucide="volume-2"></i>
   </button>
 
   <script>
+    const video = document.getElementById("miVideo");
+    const btnSonido = document.getElementById("btnSonido");
+    const icono = document.getElementById("iconSonido");
+
+    // Carga iconos Lucide
+    lucide.createIcons();
+
+    // Intentar iniciar con sonido
+    window.addEventListener('load', () => {
+      video.muted = false;
+      video.play().catch(() => {
+        video.muted = true;
+        icono.setAttribute("data-lucide", "volume-x");
+        lucide.createIcons();
+      });
+    });
+
     function toggleSonido() {
-      const video = document.getElementById("miVideo");
-      const boton = document.getElementById("btnSonido");
-      
       if (video.muted) {
         video.muted = false;
-        boton.innerHTML = "🔊 Desactivar sonido";
+        icono.setAttribute("data-lucide", "volume-2");
       } else {
         video.muted = true;
-        boton.innerHTML = "🔇 Activar sonido";
+        icono.setAttribute("data-lucide", "volume-x");
       }
-
-      video.play(); // Asegura que se reproduzca
+      lucide.createIcons();
+      video.play();
     }
   </script>
 </div></div>
@@ -108,14 +127,82 @@
                         <div style="margin-bottom: 27px;">
                             <p style="color: rgb(255,255,255);font-size: 1.5rem;font-family: Inter, sans-serif;font-weight: 700 !important;">Suscríbete y accede al Programa de Mentores:</p>
                         </div>
-                        <div class="d-xl-flex" style="margin-top: -14px;"><button class="btn btn-primary rvoe" type="button" style="color: #ffffff;border-color: #ff671b;margin-right: 10px;background: rgba(255,255,255,0);">Role-playing</button><button class="btn btn-outline-primary rvoe" type="button" style="color: #ffffff;border-color: #ff671b;margin-right: 10px;background: rgba(255,255,255,0);">Prácticas Reales</button></div>
-                        <div class="d-xl-flex" style="margin-top: 11px;"><button class="btn btn-primary rvoe" type="button" style="color: #ffffff;border-color: #ff671b;margin-right: 10px;background: rgba(255,255,255,0);">Retroalimentación Personalizada</button></div>
+                        <div class="d-xl-flex" style="margin-top: -14px;"><button class="btn btn-primary rvoe" type="button" style="color: #ffffff;border-color: #ff671b;margin-right: 10px;background: rgba(255,255,255,0);">Role-playing</button><button class="btn btn-outline-primary rvoe" type="button" style="color: #ffffff;border-color: #ff671b;margin-right: 10px;background: rgba(255,255,255,0);">Prácticas Reales</button></div><button class="btn btn-primary rvoe" type="button" style="color: #ffffff;border-color: #ff671b;margin-right: 10px;background: rgba(255,255,255,0);">Retroalimentación Personalizada</button>
+                        <div class="d-xl-flex" style="margin-top: 11px;"></div>
                         <div>
                             <hr>
                         </div>
-                        <div><button class="btn btn-primary btn-lg button-light" type="submit" style="font-size: .8rem;margin-left: 0px;background-color: #f9b233;border: none;color: #37434d;font-weight: 700 !important;text-transform: uppercase;">Comenzar mi entrenamiento con Psia&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-send-fill">
-                                    <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"></path>
-                                </svg></button></div>
+                        <div><!-- BOTÓN PRINCIPAL -->
+<button onclick="abrirPopupPsia()" style="
+  background-color: #FDB933;
+  color: #1F3262;
+  font-weight: bold;
+  font-size: .8rem;
+  padding: 16px 32px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: sans-serif;
+">
+  COMENZAR MI ENTRENAMIENTO CON PSIA
+  <i class="bi bi-send-fill" style="font-size: 18px;"></i>
+</button>
+
+<!-- POPUP -->
+<div id="popupPsia" style="display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100vh;background: rgba(0, 0, 0, 0.8);backdrop-filter: blur(4px);-webkit-backdrop-filter: blur(4px);z-index: 9999;justify-content: center;align-items: center;flex-direction: column;padding: 20px;">
+
+  <!-- BOTÓN DE CIERRE -->
+  <button onclick="cerrarPopupPsia()" style="
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+    ✕
+  </button>
+
+  <!-- CONTENIDO POPUP -->
+  <div style="background: white; padding: 30px; border-radius: 20px; max-width: 400px; width: 100%; box-shadow: 0 12px 30px rgba(0,0,0,0.3); display: flex; flex-direction: column; gap: 16px;">
+
+    <button onclick="redirigirCerrar('https://mpago.la/1CrsX6F')" onmouseover="this.style.background='#3A61C9'" onmouseout="this.style.background='#2348A0'" style="width: 100%; padding: 14px; border: none; border-radius: 12px; background-color: #2348A0; color: white; font-weight: 600; cursor: pointer;">Mensualidad</button>
+
+    <button onclick="redirigirCerrar('https://mpago.la/2R3ruPK')" onmouseover="this.style.background='#3A61C9'" onmouseout="this.style.background='#2348A0'" style="width: 100%; padding: 14px; border: none; border-radius: 12px; background-color: #2348A0; color: white; font-weight: 600; cursor: pointer;">Promoción anualidad</button>
+
+    <button onclick="redirigirCerrar('https://mpago.la/331ujtw')" onmouseover="this.style.background='#3A61C9'" onmouseout="this.style.background='#2348A0'" style="width: 100%; padding: 14px; border: none; border-radius: 12px; background-color: #2348A0; color: white; font-weight: 600; cursor: pointer;">Inscripción anual</button>
+
+    <button onclick="redirigirCerrar('https://mpago.la/14As4nT')" onmouseover="this.style.background='#3A61C9'" onmouseout="this.style.background='#2348A0'" style="width: 100%; padding: 14px; border: none; border-radius: 12px; background-color: #2348A0; color: white; font-weight: 600; cursor: pointer;">Certificado</button>
+
+    <button onclick="redirigirCerrar('https://mpago.la/2Aes8zN')" onmouseover="this.style.background='#3A61C9'" onmouseout="this.style.background='#2348A0'" style="width: 100%; padding: 14px; border: none; border-radius: 12px; background-color: #2348A0; color: white; font-weight: 600; cursor: pointer;">Primer mes + Inscripción 1er año</button>
+
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+  function abrirPopupPsia() {
+    document.getElementById("popupPsia").style.display = "flex";
+  }
+
+  function cerrarPopupPsia() {
+    document.getElementById("popupPsia").style.display = "none";
+  }
+
+  function redirigirCerrar(url) {
+    cerrarPopupPsia();
+    setTimeout(() => {
+      window.open(url, '_blank');
+    }, 300); // pequeña espera para una mejor UX
+  }
+</script></div>
                     </div>
                 </div>
             </div>
@@ -191,7 +278,7 @@
         <div class="container py-4 py-xl-5">
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 col-xxl-7 text-center mx-auto">
-                    <h2 style="color: rgb(255,255,255);">Psia</h2>
+                    <h2 style="color: rgb(255,255,255);">Psia | Psicología</h2>
                     <p style="color: rgb(181,181,181);">Conoce a Psía, tu mentora interactiva en el camino para convertirte en psicólogo o psicóloga.<br>A través de conversaciones y situaciones simuladas, podrás aplicar lo aprendido en clase, reflexionar y desarrollar tus habilidades con empatía y profesionalismo.</p>
                 </div>
             </div>
@@ -204,18 +291,175 @@
             </div>
         </div>
     </section>
-    <section id="login" style="background: #f9b233;padding: 10px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <div><a class="btn btn-primary btn-lg" role="button" style="background: #323232;border-color: #323232;" href="login.html">Comienza Ahora&nbsp;&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-right">
-                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
-                            </svg></a></div>
+    <section>
+        <div class="col-xxl-6 offset-xxl-3" style="margin-top: 31px;">
+            <div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1">Casos clínicos y emocionales</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2">Desarrollo y aprendizaje</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3">Tab 3</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" role="tabpanel" id="tab-1">
+                        <div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Motivación para abandonar un hábito adictivo</h4>
+                                    <h6 class="text-muted card-subtitle mb-2">PSC011</h6>
+                                    <p class="card-text">Analiza la motivación de un paciente para la materia PSC011 - Motivación y Emoción, con el objetivo de cambiar un hábito negativo que ha mantenido durante años.</p>
+                                    <div><!-- BOTÓN PARA ABRIR EL POPUP -->
+<button onclick="document.getElementById('popupWidget').style.display='flex'" style="padding: 10px 20px; border: none; background-color: #2348A0; color: white; border-radius: 10px; cursor: pointer;">
+  Empezar
+</button>
+
+<!-- MODAL CONTENEDOR -->
+<div id="popupWidget" onclick="cerrarSiClickFuera(event)" style="display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100vh;background: rgba(0,0,0,0.85);backdrop-filter: blur(4px);-webkit-backdrop-filter: blur(4px);justify-content: center;align-items: center;flex-direction: column;z-index: 9999;">
+  
+  <!-- BOTÓN ✕ -->
+  <button onclick="document.getElementById('popupWidget').style.display='none'" style="
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+    ✕
+  </button>
+
+  <!-- TEXTO CENTRAL -->
+  <div id="popupContent" style="color: white; text-align: center; font-size: 16px; font-weight: 500; max-width: 340px; margin-bottom: 24px; opacity: 0; transform: translateY(20px); animation: fadeUp 1s ease-out forwards;">
+    Al suscribirte podrás interactuar en sesiones de hasta cinco minutos cada una. Podrás hacer hasta dos horas de sesiones por mes
+  </div>
+
+  <!-- WIDGET DE ELEVENLABS -->
+  <elevenlabs-convai agent-id="agent_01jwvnh5bvf7ksnr0swty2kmgx"></elevenlabs-convai>
+  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+  <style>
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+  <script>
+    const moverWidget = setInterval(() => {
+      const widgetContenedor = document.querySelector('[data-testid="convai-widget-launcher-container"]');
+      if (widgetContenedor) {
+        widgetContenedor.style.position = 'fixed';
+        widgetContenedor.style.bottom = '24px';
+        widgetContenedor.style.right = '24px';
+        widgetContenedor.style.top = 'auto';
+        widgetContenedor.style.left = 'auto';
+        widgetContenedor.style.zIndex = '9999';
+        clearInterval(moverWidget);
+      }
+    }, 200);
+
+    function cerrarSiClickFuera(event) {
+      const content = document.getElementById('popupContent');
+      if (!content.contains(event.target)) {
+        document.getElementById('popupWidget').style.display = 'none';
+      }
+    }
+  </script>
+
+</div></div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Inestabilidad emocional y relaciones difíciles</h4>
+                                    <h6 class="text-muted card-subtitle mb-2">PSC018</h6>
+                                    <p class="card-text">Analiza el comportamiento de un paciente para la materia PSC018 - Psicopatología, con el propósito de detectar signos de inestabilidad emocional, impulsividad y relaciones conflictivas</p>
+                                    <div><!-- BOTÓN PARA ABRIR EL POPUP -->
+<button onclick="document.getElementById('popupWidget').style.display='flex'" style="padding: 10px 20px; border: none; background-color: #2348A0; color: white; border-radius: 10px; cursor: pointer;">
+  Empezar
+</button>
+
+<!-- MODAL CONTENEDOR -->
+<div id="popupWidget" onclick="cerrarSiClickFuera(event)" style="display: none;position: fixed;top: 0;left: 0;width: 100%;height: 100vh;background: rgba(0,0,0,0.85);backdrop-filter: blur(4px);-webkit-backdrop-filter: blur(4px);justify-content: center;align-items: center;flex-direction: column;z-index: 9999;">
+  
+  <!-- BOTÓN ✕ -->
+  <button onclick="document.getElementById('popupWidget').style.display='none'" style="
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+    ✕
+  </button>
+
+  <!-- TEXTO CENTRAL -->
+  <div id="popupContent" style="color: white; text-align: center; font-size: 16px; font-weight: 500; max-width: 340px; margin-bottom: 24px; opacity: 0; transform: translateY(20px); animation: fadeUp 1s ease-out forwards;">
+    Al suscribirte podrás interactuar en sesiones de hasta cinco minutos cada una. Podrás hacer hasta dos horas de sesiones por mes
+  </div>
+
+  <!-- WIDGET DE ELEVENLABS -->
+  <elevenlabs-convai agent-id="agent_01jwvnh5bvf7ksnr0swty2kmgx"></elevenlabs-convai>
+  <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+
+  <style>
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+  <script>
+    const moverWidget = setInterval(() => {
+      const widgetContenedor = document.querySelector('[data-testid="convai-widget-launcher-container"]');
+      if (widgetContenedor) {
+        widgetContenedor.style.position = 'fixed';
+        widgetContenedor.style.bottom = '24px';
+        widgetContenedor.style.right = '24px';
+        widgetContenedor.style.top = 'auto';
+        widgetContenedor.style.left = 'auto';
+        widgetContenedor.style.zIndex = '9999';
+        clearInterval(moverWidget);
+      }
+    }, 200);
+
+    function cerrarSiClickFuera(event) {
+      const content = document.getElementById('popupContent');
+      if (!content.contains(event.target)) {
+        document.getElementById('popupWidget').style.display = 'none';
+      }
+    }
+  </script>
+
+</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-2">
+                        <p>Content for tab 2.</p>
+                    </div>
+                    <div class="tab-pane" role="tabpanel" id="tab-3">
+                        <p>Content for tab 3.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <section></section>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/from.js"></script>
 </body>
