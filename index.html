@@ -461,9 +461,14 @@
       transform: translateX(-50%) translateY(20px);
     }
   }
+
+  /* 👇 Esto lo oculta por defecto en pantallas grandes */
+  #botonFlotantePsia {
+    display: none;
+  }
 </style>
 
-<!-- BOTÓN FLOTANTE -->
+<!-- BOTÓN FLOTANTE SOLO EN MÓVIL -->
 <button id="botonFlotantePsia" onclick="abrirPopupPsia()">
   COMENZAR MI ENTRENAMIENTO CON PSIA
   <i class="bi bi-send-fill" style="font-size: 18px;"></i>
@@ -471,6 +476,17 @@
 
 <script>
   const boton = document.getElementById("botonFlotantePsia");
+
+  // Muestra el botón SOLO si está en pantalla chica
+  function evaluarBotonFlotante() {
+    if (window.innerWidth <= 768) {
+      boton.style.display = "flex";
+    } else {
+      boton.style.display = "none";
+    }
+  }
+
+  // Mostrar u ocultar el botón al hacer scroll
   window.addEventListener("scroll", () => {
     if (window.scrollY > 200) {
       boton.classList.add("hidden");
@@ -478,6 +494,10 @@
       boton.classList.remove("hidden");
     }
   });
+
+  // Revisar el tamaño al cargar y si cambia
+  window.addEventListener("load", evaluarBotonFlotante);
+  window.addEventListener("resize", evaluarBotonFlotante);
 </script></section>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/from.js"></script>
