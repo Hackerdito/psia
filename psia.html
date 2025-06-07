@@ -161,6 +161,16 @@
     }
     // Si hay usuario, se queda en la página
   });
+  onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // ✅ Mostrar el contenido protegido
+    document.getElementById("bodyProtected").style.display = "block";
+  } else {
+    // 🔒 Redirigir al login si no hay sesión
+    window.location.href = "https://psia.netlify.app/login";
+  }
+});
+
 </script>
 
 </body>
