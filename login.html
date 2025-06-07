@@ -223,43 +223,61 @@
 <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
 
 <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
-    apiKey: "AIzaSyBNOzRm2TSXkTWuEYU1c2PepuZInbkc4lA",
+    apiKey: "AIzaSyBNOzRm2TSXkTWuEYU1c2PepuZInbkc41A",
     authDomain: "psia-b7512.firebaseapp.com",
     projectId: "psia-b7512",
-    storageBucket: "psia-b7512.firebasestorage.app",
+    storageBucket: "psia-b7512.appspot.com",
     messagingSenderId: "248311215508",
-    appId: "1:248311215508:web:a13568782953a5f7934b81",
-    measurementId: "G-GR6JB1NM2T"
+    appId: "1:248311215508:web:a13568782953a5f7934b81"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
 
+  // LOGIN con EMAIL y PASSWORD
+  window.login = function () {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-  import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+    if (email && password) {
+      document.getElementById("loginBox").style.display = "none";
+      document.getElementById("spinner").style.display = "block";
 
-const provider = new GoogleAuthProvider();
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          window.location.href = "https://psia.netlify.app/psia";
+        })
+        .catch((error) => {
+          document.getElementById("loginBox").style.display = "block";
+          document.getElementById("spinner").style.display = "none";
+          alert("Error al iniciar sesión: " + error.message);
+        });
+    } else {
+      alert("Por favor ingresa tu email y contraseña");
+    }
+  };
 
-document.getElementById("googleLogin").addEventListener("click", () => {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      // El usuario ha iniciado sesión con Google
-      window.location.href = "psia.html"; // redirige después del login
-    })
-    .catch((error) => {
-      alert("Error al iniciar sesión con Google: " + error.message);
-    });
-});
+  // LOGIN con GOOGLE
+  const provider = new GoogleAuthProvider();
+  document.getElementById("googleLogin").addEventListener("click", () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        window.location.href = "https://psia.netlify.app/psia";
+      })
+      .catch((error) => {
+        alert("Error al iniciar sesión con Google: " + error.message);
+      });
+  });
+
+  // Reiniciar interfaz si el usuario regresa
+  window.addEventListener("pageshow", function () {
+    document.getElementById("loginBox").style.display = "block";
+    document.getElementById("spinner").style.display = "none";
+  });
 </script>
 </body>
 
