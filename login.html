@@ -1,300 +1,220 @@
 <!DOCTYPE html>
-<html data-bs-theme="light" lang="en">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Psia_AI</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,700,700i&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="assets/css/4-Ejes.css">
-    <link rel="stylesheet" href="assets/css/accordion-faq-list.css">
-    <link rel="stylesheet" href="assets/css/Features-Cards-icons.css">
-    <link rel="stylesheet" href="assets/css/Features-Minimal-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="assets/css/navbar_uk.css">
-    <link rel="stylesheet" href="assets/css/Video-Responsive.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Psia_AI</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700,800,900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,700,700i&display=swap">
+  <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+  <link rel="stylesheet" href="assets/css/4-Ejes.css">
+  <link rel="stylesheet" href="assets/css/accordion-faq-list.css">
+  <link rel="stylesheet" href="assets/css/Features-Cards-icons.css">
+  <link rel="stylesheet" href="assets/css/Features-Minimal-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="assets/css/navbar_uk.css">
+  <link rel="stylesheet" href="assets/css/Video-Responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #1b2b64, #0f1a3a);
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .login-container {
+      width: 340px;
+      margin: 100px auto;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 40px 30px;
+      position: relative;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      text-align: center;
+    }
+
+    .login-container .logo-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      position: absolute;
+      top: -40px;
+      left: calc(50% - 40px);
+      object-fit: cover;
+      border: 3px solid #ffffff33;
+      background-color: #ffffff11;
+      backdrop-filter: blur(5px);
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      width: 100%;
+      padding: 12px 40px;
+      margin: 10px 0;
+      border-radius: 30px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .login-container input::placeholder {
+      color: #ccd0e0;
+    }
+
+    .login-container .icon {
+      position: absolute;
+      margin-left: 15px;
+      margin-top: 22px;
+      color: white;
+    }
+
+    .login-container .options {
+      margin-top: 10px;
+      font-size: 12px;
+      display: flex;
+      justify-content: space-between;
+      color: #fff;
+    }
+
+    .login-container button {
+      margin-top: 20px;
+      background: #ff6f00;
+      color: white;
+      border: none;
+      padding: 14px;
+      width: 100%;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .spinner {
+      display: none;
+      width: 80px;
+      height: 80px;
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top: 6px solid #ff6f00;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 100px auto;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 
-<body id="inicio">
-    <nav class="navbar navbar-expand-lg sticky-top navigation-clean-button navbar-light" style="background: #102947;">
-        <div class="container"><a class="d-inline-block" href="index.html"><img src="assets/img/Universidad_Uk_2022.png"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon" style="background: url(&quot;assets/img/menu.png&quot;) center / cover no-repeat;"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-1" style="color: rgb(255,255,255);">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item d-flex justify-content-start"><a class="nav-link d-flex" style="color: #ffffff;" href="https://universidaduk.com/about" target="_blank">Acerca de nosotros</a></li>
-                    <li class="nav-item dropdown multilevel"><a class="nav-link d-flex justify-content-start" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="color: rgb(255,255,255);">Oferta Educativa<i class="fa fa-chevron-right" style="margin-top: 5px;margin-left: 5px;"></i></a>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item dropdown" href="#">Licenciaturas</a><a class="dropdown-item" href="#">Maestrías</a><a class="dropdown-item" href="#">Prepa en 24 Meses</a></div>
-                    </li>
-                    <li class="nav-item d-flex justify-content-start"><a class="nav-link d-flex" style="color: #ffffff;" href="https://blog.universidaduk.com/" target="_blank">Blog</a></li>
-                    <li class="nav-item d-flex justify-content-start"><a class="nav-link d-flex" href="https://universidaduk.com/tienda" style="color: rgb(255,255,255);" target="_blank">Tienda</a><a class="btn btn-primary" role="button" style="background: #ff671b;border-color: #ff671b;" href="https://ukuepa.secure.force.com/LandingKuepa" target="_blank">Mi Portal Uk</a></li>
-                </ul>
-                <div>
-                    <div class="dropdown d-flex d-sm-flex justify-content-start justify-content-sm-start"><a aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fa fa-globe" style="color: rgb(255,255,255);font-size: 32px;margin-left: 14px;text-decoration: none;"></i></a>
-                        <div class="dropdown-menu dropdown-menu-sm-end text-lowercase" style="text-transform: none;"><a class="dropdown-item" href="#" style="text-transform: none;">🇧🇴&nbsp; Bolivia</a><a class="dropdown-item" href="#" style="text-transform: none;">🇨🇱&nbsp; Chile</a><a class="dropdown-item" href="#" style="text-transform: none;">🇨🇴&nbsp; Colombia</a><a class="dropdown-item" href="#" style="text-transform: none;">🇪🇨&nbsp; Ecuador</a><a class="dropdown-item" href="#" style="text-transform: none;">🇸🇻&nbsp; El Salvador</a><a class="dropdown-item" href="#" style="text-transform: none;">🇺🇸&nbsp; Estados Unidos</a><a class="dropdown-item" href="#" style="text-transform: none;">🇬🇹&nbsp; Guatemala</a><a class="dropdown-item" href="#" style="text-transform: none;">🇲🇽&nbsp; México</a><a class="dropdown-item" href="#" style="text-transform: none;">🇵🇦&nbsp; Panamá</a><a class="dropdown-item" href="#" style="text-transform: none;">🇵🇾&nbsp; Paraguay</a><a class="dropdown-item" href="#" style="text-transform: none;">🇵🇪&nbsp; Perú</a><a class="dropdown-item" href="#" style="text-transform: none;">🇩🇴&nbsp; República Dominicana</a></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <section class="d-xl-flex d-xxl-flex justify-content-xl-center align-items-xxl-center" id="bg" style="height: 100%;padding-bottom: 26px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 d-xxl-flex justify-content-xxl-center">
-                    <div><!-- FontAwesome para íconos -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<body>
+  <div class="login-container" id="loginBox">
+    <img src="assets/img/uk.png" class="logo-img" alt="Logo UK">
 
-<style>
-  body {
-    background: linear-gradient(135deg, #1b2b64, #0f1a3a);
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+    <div style="position: relative;">
+      <i class="fas fa-user icon"></i>
+      <input type="text" id="email" placeholder="Email ID">
+    </div>
 
-  .login-container {
-    width: 340px;
-    margin: 100px auto;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 20px;
-    padding: 40px 30px;
-    position: relative;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-    text-align: center;
-    transition: opacity 0.5s ease;
-  }
+    <div style="position: relative;">
+      <i class="fas fa-lock icon"></i>
+      <input type="password" id="password" placeholder="Password">
+    </div>
 
-  .login-container .logo-img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    position: absolute;
-    top: -40px;
-    left: calc(50% - 40px);
-    object-fit: cover;
-    border: 3px solid #ffffff33;
-    background-color: #ffffff11;
-    backdrop-filter: blur(5px);
-  }
+    <div class="options">
+      <label><input type="checkbox" id="remember"> Remember me</label>
+      <a href="#" style="color:#ccc; text-decoration:none;">Forgot Password?</a>
+    </div>
 
-  .login-container input[type="text"],
-  .login-container input[type="password"] {
-    width: 100%;
-    padding: 12px 40px;
-    margin: 10px 0;
-    border-radius: 30px;
-    border: none;
-    background: rgba(255,255,255,0.1);
-    color: white;
-    font-size: 14px;
-    outline: none;
-    backdrop-filter: blur(10px);
-  }
-
-  .login-container input::placeholder {
-    color: #ccd0e0;
-  }
-
-  .login-container .icon {
-    position: absolute;
-    margin-left: 15px;
-    margin-top: 22px;
-    color: white;
-  }
-
-  .login-container .options {
-    margin-top: 10px;
-    font-size: 12px;
-    display: flex;
-    justify-content: space-between;
-    color: #fff;
-  }
-
-  .login-container button {
-    margin-top: 20px;
-    background: #ff6f00;
-    color: white;
-    border: none;
-    padding: 14px;
-    width: 100%;
-    border-radius: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-
-  .login-container button:hover {
-    background: #e65c00;
-  }
-
-  /* SPINNER */
-  .spinner {
-    display: none;
-    width: 80px;
-    height: 80px;
-    border: 6px solid rgba(255,255,255,0.2);
-    border-top: 6px solid #ff6f00;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 100px auto;
-  }
-
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-
-  /* FIX: Estilo para cuando el navegador autocompleta */
-  input:-webkit-autofill {
-    background: rgba(255,255,255,0.1) !important;
-    -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,0.1) inset !important;
-    -webkit-text-fill-color: white !important;
-    color: white !important;
-    border-radius: 30px;
-    transition: background-color 5000s ease-in-out 0s;
-  }
-</style>
-
-<!-- FORMULARIO LOGIN -->
-<div class="login-container" id="loginBox">
-  <img src="assets/img/uk.png" class="logo-img" alt="Logo UK">
-
-  <div style="position: relative;">
-    <i class="fas fa-user icon"></i>
-    <input type="text" id="email" placeholder="Email ID">
+    <button onclick="login()">Ingresar</button>
+    <button id="googleLogin" style="margin-top: 10px; background: white; color: #444; border: none; padding: 12px; width: 100%; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" style="width: 20px; height: 20px;">
+      Iniciar sesión con Google
+    </button>
   </div>
 
-  <div style="position: relative;">
-    <i class="fas fa-lock icon"></i>
-    <input type="password" id="password" placeholder="Password">
-  </div>
+  <div class="spinner" id="spinner"></div>
 
-  <div class="options">
-    <label><input type="checkbox" id="remember"> Remember me</label>
-    <a href="#" style="color:#ccc; text-decoration:none;">Forgot Password?</a>
-  </div>
+  <!-- Firebase con SDK MODULAR (v9) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      GoogleAuthProvider,
+      signInWithPopup
+    } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
-  <button id="googleLogin" style="margin-top: 10px; background: white; color: #444; border: none; padding: 12px; width: 100%; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
-  <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" style="width: 20px; height: 20px;">
-  Iniciar sesión con Google
-</button>
-</div>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBNOzRm2TSXkTWuEYU1c2PepuZInbkc41A",
+      authDomain: "psia-b7512.firebaseapp.com",
+      projectId: "psia-b7512",
+      storageBucket: "psia-b7512.appspot.com",
+      messagingSenderId: "248311215508",
+      appId: "1:248311215508:web:a13568782953a5f7934b81"
+    };
 
-<!-- SPINNER DE CARGA -->
-<div class="spinner" id="spinner"></div>
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-<script>
+    window.login = function () {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
 
-  function login() {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+      if (email && password) {
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("spinner").style.display = "block";
 
-    if(email && password){
+        signInWithEmailAndPassword(auth, email, password)
+          .then(() => {
+            window.location.href = "https://psia.netlify.app/psia";
+          })
+          .catch((error) => {
+            document.getElementById("loginBox").style.display = "block";
+            document.getElementById("spinner").style.display = "none";
+            alert("Error al iniciar sesión: " + error.message);
+          });
+      } else {
+        alert("Por favor ingresa tu email y contraseña");
+      }
+    };
+
+    const provider = new GoogleAuthProvider();
+    document.getElementById("googleLogin").addEventListener("click", () => {
       document.getElementById("loginBox").style.display = "none";
       document.getElementById("spinner").style.display = "block";
 
-      setTimeout(() => {
-        window.location.href = "psia.html"; // CAMBIA ESTA URL
-      }, 1000); // Cambia este valor para controlar los segundos
-    } else {
-      alert("Por favor ingresa tu email y contraseña");
-    }
-  }
-
-  // Reiniciar login al regresar a la página
-  window.addEventListener("pageshow", function(event) {
-    document.getElementById("loginBox").style.display = "block";
-    document.getElementById("spinner").style.display = "none";
-  });
-</script></div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/from.js"></script>
-
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-  import {
-    getAuth,
-    signInWithEmailAndPassword,
-    GoogleAuthProvider,
-    signInWithPopup
-  } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-
-  // Configuración de Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyBNOzRm2TSXkTWuEYU1c2PepuZInbkc41A",
-    authDomain: "psia-b7512.firebaseapp.com",
-    projectId: "psia-b7512",
-    storageBucket: "psia-b7512.appspot.com",
-    messagingSenderId: "248311215508",
-    appId: "1:248311215508:web:a13568782953a5f7934b81"
-  };
-
-  // Inicializar Firebase
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  // Función de login con correo y contraseña
-  window.login = function () {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
-
-    if (email && password) {
-      document.getElementById("loginBox").style.display = "none";
-      document.getElementById("spinner").style.display = "block";
-
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+      signInWithPopup(auth, provider)
+        .then(() => {
           window.location.href = "https://psia.netlify.app/psia";
         })
         .catch((error) => {
           document.getElementById("loginBox").style.display = "block";
           document.getElementById("spinner").style.display = "none";
-          alert("Error al iniciar sesión: " + error.message);
+          alert("Error al iniciar sesión con Google: " + error.message);
         });
-    } else {
-      alert("Por favor ingresa tu email y contraseña");
-    }
-  };
+    });
 
-  // Login con Google
-  const provider = new GoogleAuthProvider();
-  document.getElementById("googleLogin").addEventListener("click", () => {
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("spinner").style.display = "block";
+    document.getElementById("password").addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        login();
+      }
+    });
 
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        window.location.href = "https://psia.netlify.app/psia";
-      })
-      .catch((error) => {
-        document.getElementById("loginBox").style.display = "block";
-        document.getElementById("spinner").style.display = "none";
-        alert("Error al iniciar sesión con Google: " + error.message);
-      });
-  });
-
-  // Permitir login con tecla Enter desde el campo de contraseña
-  document.getElementById("password").addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      login();
-    }
-  });
-
-  // Mostrar formulario al regresar a la página
-  window.addEventListener("pageshow", function () {
-    document.getElementById("loginBox").style.display = "block";
-    document.getElementById("spinner").style.display = "none";
-  });
-</script>
+    window.addEventListener("pageshow", function () {
+      document.getElementById("loginBox").style.display = "block";
+      document.getElementById("spinner").style.display = "none";
+    });
+  </script>
 </body>
-
-</html> 
+</html>
