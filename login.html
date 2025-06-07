@@ -278,6 +278,15 @@
     document.getElementById("loginBox").style.display = "block";
     document.getElementById("spinner").style.display = "none";
   });
+
+  // Activar login con tecla Enter
+document.getElementById("password").addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    login();
+  }
+});
+
+
 </script>
 </body>
 
