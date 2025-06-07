@@ -224,8 +224,14 @@
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup
+  } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
+  // Configuración de Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyBNOzRm2TSXkTWuEYU1c2PepuZInbkc41A",
     authDomain: "psia-b7512.firebaseapp.com",
@@ -235,12 +241,13 @@
     appId: "1:248311215508:web:a13568782953a5f7934b81"
   };
 
+  // Inicializar Firebase
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  // LOGIN con EMAIL y PASSWORD
+  // Función de login con correo y contraseña
   window.login = function () {
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
 
     if (email && password) {
@@ -261,32 +268,35 @@
     }
   };
 
-  // LOGIN con GOOGLE
+  // Login con Google
   const provider = new GoogleAuthProvider();
   document.getElementById("googleLogin").addEventListener("click", () => {
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("spinner").style.display = "block";
+
     signInWithPopup(auth, provider)
       .then((result) => {
         window.location.href = "https://psia.netlify.app/psia";
       })
       .catch((error) => {
+        document.getElementById("loginBox").style.display = "block";
+        document.getElementById("spinner").style.display = "none";
         alert("Error al iniciar sesión con Google: " + error.message);
       });
   });
 
-  // Reiniciar interfaz si el usuario regresa
+  // Permitir login con tecla Enter desde el campo de contraseña
+  document.getElementById("password").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      login();
+    }
+  });
+
+  // Mostrar formulario al regresar a la página
   window.addEventListener("pageshow", function () {
     document.getElementById("loginBox").style.display = "block";
     document.getElementById("spinner").style.display = "none";
   });
-
-  // Activar login con tecla Enter
-document.getElementById("password").addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    login();
-  }
-});
-
-
 </script>
 </body>
 
