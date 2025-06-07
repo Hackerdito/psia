@@ -189,6 +189,12 @@
 <div class="spinner" id="spinner"></div>
 
 <script>
+
+  <!-- Firebase SDK clásico -->
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
+
+
   function login() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -218,9 +224,6 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/from.js"></script>
 
-    <!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js"></script>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
@@ -297,6 +300,10 @@
     document.getElementById("loginBox").style.display = "block";
     document.getElementById("spinner").style.display = "none";
   });
+
+type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  ...
 </script>
 </body>
 
