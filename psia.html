@@ -135,6 +135,34 @@
     </section>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/from.js"></script>
+
+
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBNOzRm2TSXkTWuEYU1c2PepuZInbkc41A",
+    authDomain: "psia-b7512.firebaseapp.com",
+    projectId: "psia-b7512",
+    storageBucket: "psia-b7512.appspot.com",
+    messagingSenderId: "248311215508",
+    appId: "1:248311215508:web:a13568782953a5f7934b81"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // Verificar si el usuario está autenticado
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      // Si NO hay usuario, redirige al login
+      window.location.href = "https://psia.netlify.app";
+    }
+    // Si hay usuario, se queda en la página
+  });
+</script>
+
 </body>
 
 </html>
