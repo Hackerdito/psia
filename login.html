@@ -179,7 +179,10 @@
     <a href="#" style="color:#ccc; text-decoration:none;">Forgot Password?</a>
   </div>
 
-  <button onclick="login()">Ingresa</button>
+  <button id="googleLogin" style="margin-top: 10px; background: white; color: #444; border: none; padding: 12px; width: 100%; border-radius: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+  <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" style="width: 20px; height: 20px;">
+  Iniciar sesión con Google
+</button>
 </div>
 
 <!-- SPINNER DE CARGA -->
@@ -241,6 +244,22 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+
+
+  import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+const provider = new GoogleAuthProvider();
+
+document.getElementById("googleLogin").addEventListener("click", () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      // El usuario ha iniciado sesión con Google
+      window.location.href = "psia.html"; // redirige después del login
+    })
+    .catch((error) => {
+      alert("Error al iniciar sesión con Google: " + error.message);
+    });
+});
 </script>
 </body>
 
